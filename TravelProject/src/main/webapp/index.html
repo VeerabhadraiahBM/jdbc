@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            margin: auto;
+            box-shadow: 0px 0px 10px gray;
+        }
+        input, select, button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 8px;
+        }
+        #friendsSection {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form action="travel" method="post">
+        <h2>Travel Information</h2>
+        
+        <label>Date of Travel:</label>
+        <input type="date" name="travel_date" required>
+
+        <label>Source Place:</label>
+        <input type="text" name="source_place" required>
+
+        <label>Destination Place:</label>
+        <input type="text" name="destination_place" required>
+
+        <label>Mode of Travel:</label>
+        <select name="mode_of_travel" required>
+            <option value="">Select</option>
+            <option value="Car">Car</option>
+            <option value="Bus">Bus</option>
+            <option value="Airline">Airline</option>
+        </select>
+
+        <label>Company Type:</label>
+        <select name="company_type" id="companyType" onchange="toggleFriends()" required>
+            <option value="">Select</option>
+            <option value="Self">Self</option>
+            <option value="With Friends">With Friends</option>
+        </select>
+
+        <div id="friendsSection">
+            <label>Friends Names:</label>
+            <input type="text" name="friends_names" placeholder="Enter friend names separated by commas">
+        </div>
+
+        <label>Distance (in KM):</label>
+        <input type="number" name="distance_km" step="0.1" required>
+
+        <label>Cost of Travel:</label>
+        <input type="number" name="cost" step="0.01" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function toggleFriends() {
+            var company = document.getElementById("companyType").value;
+            var friendsDiv = document.getElementById("friendsSection");
+            if (company === "With Friends") {
+                friendsDiv.style.display = "block";
+            } else {
+                friendsDiv.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
